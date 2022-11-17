@@ -83,3 +83,7 @@ nav{
     width: 88%;
     height: 40%;
 }
+
+.red{
+    border-bottom: 3px solid red !important;
+}

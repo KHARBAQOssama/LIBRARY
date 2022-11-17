@@ -30,7 +30,7 @@
             </div>
             <div class="w-100 d-flex justify-content-around align-items-center">
                 <p class="text-dark mt-2"><a class="text-dark" href="signup.php">Create An Account</a></p>
-                <button type="submit" name="submitSin" class="btn-sm btn-primary rounded px-2">SIGN IN</button>
+                <button type="submit" name="submitSin" class="btn-sm text-info fw-bold rounded px-2">SIGN IN</button>
             </div>
         </form>
       </div>

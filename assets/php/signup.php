@@ -23,28 +23,34 @@
 
 
 
-                    <div class="mb-3  d-flex position-relative">
+                    <div class="mb-4  d-flex position-relative">
                         <i class="bi bi-person"></i>
                         <input type="text" name="username" class="form-control rounded-0" id="username" placeholder="UserName">
+                        <p class="ms-4 ps-2 d-block position-absolute text-danger top-100 opacity-0" id="error1">please enter a valid data</p>
                     </div>
-                    <div class="mb-3  d-flex position-relative">
+                    <div class="mb-4  d-flex position-relative">
                         <i class="bi bi-at"></i>                        
-                        <input type="email" name="email" class="form-control rounded-0 " id="email" placeholder="Email address">
+                        <input type="email" name="email" class="form-control rounded-0" id="email" placeholder="Email address">
+                        <p class="ms-4 ps-2 d-block position-absolute text-danger top-100 opacity-0" id="error2">please enter a valid data</p>
                     </div>
-                    <div class="mb-3  d-flex position-relative">
+                    <div class="mb-4  d-flex position-relative">
                         <i class="bi bi-lock"></i>
-                        <input type="password" name="password" class="form-control rounded-0 " id="password" placeholder="Password">
+                        <input type="password" name="password" class="form-control rounded-0" id="password" placeholder="Password">
+                        <p class="ms-4 ps-2 d-block position-absolute text-danger top-100 opacity-0" id="error3">please enter a valid data</p>
                     </div>
-                    <div class="mb-3  d-flex position-relative">
+                    <div class="mb-4  d-flex position-relative">
                         <i class="bi bi-lock"></i>
-                        <input type="password" name="password2" class="form-control rounded-0 " id="password2" placeholder="Confirme the Password">
+                        <input type="password" name="password2" class="form-control rounded-0" id="password2" placeholder="Confirme the Password">
+                        <p class="ms-4 ps-2 d-block position-absolute text-danger top-100 opacity-0" id="error4">please enter a valid data</p>
                     </div>
                     <div class="w-100 d-flex justify-content-around align-items-center">
                         <p class="text-dark mt-2"><a class="text-dark" href="signin.php">I Already Have An Account</a></p>
-                        <button type="submit" name="submitSup" class="btn-sm btn-primary  px-2">REGISTER</button>
+                        <button type="submit" name="submitSup" class="btn-sm text-info rounded-5 fw-bold px-2" id="supBtn" disabled>REGISTER</button>
                     </div>
         </form>
       </div>
+
+      <script src="../js/signup.js"></script>
          <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
 </body>
