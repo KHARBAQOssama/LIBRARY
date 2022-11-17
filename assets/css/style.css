@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;300;400;500;600;700;800&display=swap');
+* {
+    margin: 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Dosis', sans-serif;
+    color: white;
+}
+ul, a{
+    list-style: none;
+    text-decoration: none;}
+
+/* Landing Page style*/
+
+.lp-body{
+    padding: 9%;
+    padding-bottom: 6% !important;
+}
+p{
+    text-align: justify;
+}
+.logo{
+    width: 40%;
+}
+.btn-container{
+    width: 50%;
+}
+
+button{
+    border: 2px solid #5BC0DE !important;
+    background-color: transparent !important;
+}
+#addbook,#username{
+    width: 8em;
+    background-color: transparent;
+    color: #5bc0de;
+    padding: 0 5px;
+    border: 2px solid #5bc0de;
+    border-radius: 10px;
+    background-image: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+#addbook :hover,#username :hover{
+    box-shadow: ;
+}
+
+.sign-in{
+	background-image: none;
+	border : 2px solid white;
+}
+
+a:hover > i{
+    color: #5bc0de;
+}
+
+/*sign forms style*/
+
+form i{
+    color: black;
+    font-size: 1.4em;
+    margin-right: 0.5em;}
+
+.sign-form{
+    padding: 1.6em;}
+
+input{
+    border: none !important;
+    border-bottom: 2px solid rgb(31, 158, 238) !important;}
+
+
+    /* Home page */
+
+nav{
+    background-color: rgb(20,24,51);
+}
+.home-body{
+    background-color: rgb(14,14,35);
+}
+.w-90{
+    width: 88%;
+    height: 40%;
+}
