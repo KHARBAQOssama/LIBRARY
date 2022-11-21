@@ -117,6 +117,10 @@ include './assets/php/database.php';
             if (isset($_SESSION['profile'])){ 
             allBooks($_SESSION['profile']['id'] , $_SESSION['profile']['username']);} ?>
       </section>
+
+      <?php
+      include './assets/php/forms.php'
+      ?>
     <!-- JavaScript Bundle with Popper -->
     <script src="./assets/js/script.js"></script>
     
