@@ -70,3 +70,49 @@ function signIn(){
     }
 
 }
+
+function allBooks($x,$y){
+    global $conn;
+    $result = mysqli_query($conn, "SELECT * FROM books");
+
+    while($book = mysqli_fetch_assoc($result)){
+        $id=$book['id'];
+        $title = $book['title'];
+        $author = $book['author'];
+        $category = $book['category'];
+        $price = $book['price'];
+        $userId = $book['admin'];
+    
+        ?>
+        <div class="col-sm-11 col-lg-2 m-3 position-relative book d-flex justify-content-center">
+          <a href="#">
+          <?php if($category == 1){
+                                ?>
+            <img class="w-100" src="images/Music.png" alt="">                    
+          <?php }else if($category == 2){
+                                ?>
+            <img class="w-100" src="images/historic.png" alt="">
+          <?php }else if($category == 3){
+                                ?>
+            <img class="w-100" src="images/Sciences.png" alt="">
+          <?php }else if($category == 4){
+                                ?>
+            <img class="w-100" src="images/animal.png" alt="">
+            <?php }?>
+          <h5 class="text-center position-absolute top-0 p-1 book-info"><?php echo "$title" ;?></h5>
+            <div class="position-absolute bottom-0  book-info">
+                <p class="text-center mt-2">AUTHOR : <span><?php echo "$author" ;?></span></p>
+                <div class="d-flex align-items-center justify-content-between">
+                <p class="ms-2 fw-bold">PRICE : <span class="text-info"><?php echo "$price" ;?></span>$</p>
+                <?php if($userId != $x){
+                                ?>
+                <button type="button" onclick="buying('<?= $title?>','<?= $y?>',<?= $id?>,<?= $x?>);" class="px-2 py-1 mb-3 rounded" data-bs-toggle="modal" data-bs-target="#deleteBook"><i class="bi bi-cart"></i></button>
+                <?php }?>
+                </div>
+            </div></a>
+        </div>
+        <?php    }
+
+}
+
+
