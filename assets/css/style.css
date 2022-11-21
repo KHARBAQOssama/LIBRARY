@@ -87,3 +87,8 @@ nav{
 .red{
     border-bottom: 3px solid red !important;
 }
+
+.book-info{
+    width: 89%;
+    background-color: rgba(0, 0, 0, 0.539);
+}

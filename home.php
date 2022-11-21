@@ -112,10 +112,28 @@ include './assets/php/database.php';
 
                    
       </div>
-      <section class="d-flex row justify-content-around gap-3">
+      <section class="d-flex row justify-content-around px-5 gap-3 w-100">
       <?php 
             if (isset($_SESSION['profile'])){ 
             allBooks($_SESSION['profile']['id'] , $_SESSION['profile']['username']);} ?>
+      </section>
+
+      <section class="d-flex row justify-content-around gap-3">
+              <!-- <div class="col-lg-2 bg-white rounded shadow d-flex flex-column pb-2">
+                <img src="./assets/img/animal.png" class="m-auto rounded my-2" alt="" width="90%">
+                <div class="w-100">
+                  <h5 class="text-dark text-center">TITLE : <span>?php echo "$title" ;?></span></h5>
+                  <h5 class="text-dark text-center">AUTHOR : <span>?php echo "$author" ;?></span></h5>
+                  <div class="w-100 d-flex justify-content-between px-3">
+                    <h6 class="text-dark">PRICE : <span class="text-info">?php echo "$price" ;?></span>$</h6>
+                    ?php if($userId != $x){
+                                ?>
+                    <button type="button" onclick="buying('?= $title?>','?= $y?>',?= $id?>,?= $x?>);" data-bs-toggle="modal" data-bs-target="#deleteBook" class="rounded bg-info px-2"><i class="bi bi-cart text-white"></i></button>
+
+                    ?php }?>
+                  </div>
+                </div>
+              </div> -->
       </section>
 
       <?php

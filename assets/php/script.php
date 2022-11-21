@@ -6,6 +6,8 @@ session_start();
 
 if(isset($_POST['submitSup']))       register();
 if(isset($_POST['submitSin']))       signIn();
+if(isset($_POST['add']))             addBook();
+
 
 
 function register(){
@@ -65,11 +67,33 @@ function signIn(){
             header('location: signin.php'); 
         }else{
             $_SESSION['welcome'] = "welcome back  ";
-            header('location: home.php'); 
+            header('location: ../../home.php'); 
         }
     }
 
 }
+
+
+function addBook(){
+    global $conn;
+
+    $title = $_POST['title'];
+    $author = $_POST['author'];
+    $category = $_POST['category'];
+    $price = $_POST['price'];
+    $userId = $_POST['userId'];
+
+    if(!empty($title) && !empty($author) && !empty($category) && !empty($price) && !empty($userId)){
+
+        $result = mysqli_query($conn ,"INSERT INTO `books` (`title`,`author`,`category`,`price`,`admin`) VALUES ('$title','$author','$category','$price','$userId');");
+
+        if($result){
+            $_SESSION['added'] = " your book has been added successfully !";
+            header('location: ./../../home.php');
+        }
+}}
+
+
 
 function allBooks($x,$y){
     global $conn;
@@ -84,33 +108,35 @@ function allBooks($x,$y){
         $userId = $book['admin'];
     
         ?>
-        <div class="col-sm-11 col-lg-2 m-3 position-relative book d-flex justify-content-center">
-          <a href="#">
-          <?php if($category == 1){
+       <div class="col-lg-3 bg-white rounded shadow d-flex flex-column mb-4 pb-2">
+                
+                <?php if($category == 1){
+                                        ?>
+                    <img class="mx-2 rounded my-2" alt="" width="90%" src="./assets/img/Music.png">                    
+                <?php }else if($category == 2){
+                                        ?>
+                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/historic.png">
+                <?php }else if($category == 3){
+                                        ?>
+                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/Sciences.png">
+                <?php }else if($category == 4){
+                                        ?>
+                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/animal.png">
+                    <?php }?>
+                    <div class="w-100">
+                  <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">TITLE : <span class="text-dark"><?php echo "$title" ;?></span></h5>
+                  <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">AUTHOR : <span class="text-dark"><?php echo "$author" ;?></span></h5>
+                  <div class="w-100 d-flex justify-content-between px-3">
+                    <h6 class="text-dark">PRICE : <span class="text-info"><?php echo "$price" ;?> $</span></h6>
+                    <?php if($userId != $x){
                                 ?>
-            <img class="w-100" src="images/Music.png" alt="">                    
-          <?php }else if($category == 2){
-                                ?>
-            <img class="w-100" src="images/historic.png" alt="">
-          <?php }else if($category == 3){
-                                ?>
-            <img class="w-100" src="images/Sciences.png" alt="">
-          <?php }else if($category == 4){
-                                ?>
-            <img class="w-100" src="images/animal.png" alt="">
-            <?php }?>
-          <h5 class="text-center position-absolute top-0 p-1 book-info"><?php echo "$title" ;?></h5>
-            <div class="position-absolute bottom-0  book-info">
-                <p class="text-center mt-2">AUTHOR : <span><?php echo "$author" ;?></span></p>
-                <div class="d-flex align-items-center justify-content-between">
-                <p class="ms-2 fw-bold">PRICE : <span class="text-info"><?php echo "$price" ;?></span>$</p>
-                <?php if($userId != $x){
-                                ?>
-                <button type="button" onclick="buying('<?= $title?>','<?= $y?>',<?= $id?>,<?= $x?>);" class="px-2 py-1 mb-3 rounded" data-bs-toggle="modal" data-bs-target="#deleteBook"><i class="bi bi-cart"></i></button>
-                <?php }?>
+                    <button type="button" onclick="buying('?= $title?>','?= $y?>',?= $id?>,?= $x?>);" data-bs-toggle="modal" data-bs-target="#deleteBook" class="rounded bg-info px-2"><i class="bi bi-cart text-white"></i></button>
+
+                    <?php }?>
+                  </div>
+                  <button class="w-100 m-auto rounded mt-3 text-info"><a type="button" data-bs-toggle="modal" data-bs-target="#show-book" c onclick="fillBook(<?= $bookId;?>,'<?= $title;?>','<?= $author;?>',<?= $category;?>,<?= $price;?>);">MORE</a></button>
                 </div>
-            </div></a>
-        </div>
+              </div>
         <?php    }
 
 }

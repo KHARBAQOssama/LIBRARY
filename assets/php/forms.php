@@ -1,7 +1,7 @@
 <div class="modal fade" id="add-book" aria-hidden="true">
     <div class="modal-dialog ">
         
-            <form action="script.php" method="post" class="modal-content  col-lg-6 col-md-6 col-sm-12 m-0 sign-form m-auto bg-white text-dark "  >
+            <form action="./assets/php/script.php" method="post" class="modal-content  col-lg-6 col-md-6 col-sm-12 m-0 sign-form m-auto bg-white text-dark "  >
         
                     <div class="d-flex justify-content-center mb-3">
                         <h3 class="text-info">ADD BOOK
@@ -40,7 +40,7 @@
                         <i class="hide" id="i4" title="passwords are not the same"></i>
                     </div>
                     <div class="w-100 d-flex justify-content-around align-items-center">
-                        <button type="submit" name="add" class="btn btn-primary rounded px-5">ADD</button>
+                        <button type="submit" name="add" class="btn btn-primary text-info fw-bold rounded px-5">ADD</button>
                     </div>
             </form>  
     </div>
@@ -53,7 +53,7 @@
 
 
 <!-- Modal -->
-<form action="script.php" method="post" class="modal fade" id="deleteBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<form action="./assets/php/script.php" method="post" class="modal fade" id="deleteBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
                             <input type="text" name="book" id="book">
@@ -80,7 +80,7 @@
 <div class="modal fade" id="show-book" aria-hidden="true">
     <div class="modal-dialog ">
 
-        <form action="script.php" method="post" class=" modal-content col-lg-6 col-md-6 col-sm-12 m-0 sign-form m-auto bg-white text-dark">
+        <form action="./assets/php/script.php" method="post" class=" modal-content col-lg-6 col-md-6 col-sm-12 m-0 sign-form m-auto bg-white text-dark">
                     <div class="d-flex justify-content-center mb-3">
                         <h3 class="text-info">Book informations
                         </h3>
