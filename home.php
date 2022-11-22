@@ -1,7 +1,7 @@
 <?php
 include './assets/php/script.php';
 include './assets/php/database.php';
-if(!isset($_SESSION['profile']))    header('location:signin.php');
+if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
 ?>
 
 <!DOCTYPE html>

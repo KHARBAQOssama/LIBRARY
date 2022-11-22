@@ -84,10 +84,11 @@ function addBook(){
     $category = $_POST['category'];
     $price = $_POST['price'];
     $userId = $_POST['userId'];
+    $image = 'book'.rand(1,9).'.jpg';
 
     if(!empty($title) && !empty($author) && !empty($category) && !empty($price) && !empty($userId)){
 
-        $result = mysqli_query($conn ,"INSERT INTO `books` (`title`,`author`,`category`,`price`,`admin`) VALUES ('$title','$author','$category','$price','$userId');");
+        $result = mysqli_query($conn ,"INSERT INTO `books` (`title`,`author`,`category`,`price`,`admin`,`image`) VALUES ('$title','$author','$category','$price','$userId','$image');");
 
         if($result){
             $_SESSION['added'] = " your book has been added successfully !";
@@ -108,23 +109,13 @@ function allBooks($x,$y){
         $category = $book['category'];
         $price = $book['price'];
         $userId = $book['admin'];
+        $image = $book['image'];
     
         ?>
        <div class="col-lg-3 col-md-5 col-11 col-sm-5  bg-white rounded d-flex flex-column mb-4 pb-2 book">
+                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/<?php
+                    echo "$image"?>">                    
                 
-                <?php if($category == 1){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/Music.png">                    
-                <?php }else if($category == 2){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/historic.png">
-                <?php }else if($category == 3){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/Sciences.png">
-                <?php }else if($category == 4){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/animal.png">
-                    <?php }?>
                     <div class="w-100">
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">TITLE : <span class="text-dark"><?php echo "$title" ;?></span></h5>
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">AUTHOR : <span class="text-dark"><?php echo "$author" ;?></span></h5>
@@ -168,23 +159,14 @@ function myBooks($x){
                 $author = $book['author'];
                 $category = $book['category'];
                 $price = $book['price'];
+                $image = $book['image'];
             
                 ?>
                 <div class="col-lg-3 col-md-5 col-11 col-sm-5  bg-white rounded d-flex flex-column mb-4 pb-2 book">
                 
-                <?php if($category == 1){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/Music.png">                    
-                <?php }else if($category == 2){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/historic.png">
-                <?php }else if($category == 3){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/Sciences.png">
-                <?php }else if($category == 4){
-                                        ?>
-                    <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/animal.png">
-                    <?php }?>
+                <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/<?php
+                    echo "$image"?>"> 
+                    
                     <div class="w-100">
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">TITLE : <span class="text-dark"><?php echo "$title" ;?></span></h5>
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">AUTHOR : <span class="text-dark"><?php echo "$author" ;?></span></h5>
@@ -237,3 +219,51 @@ function delete(){
     }
 }
 
+// --------------------------------------
+// -----------statics functions ---------
+function sales(){
+    global $conn;  
+
+    $result = mysqli_query($conn,"SELECT count(*) FROM `sales`");
+    $sales = mysqli_fetch_assoc($result);
+
+    echo $sales['count(*)'];
+
+}
+
+function myBooksCount($x){
+    global $conn;
+    $count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM books WHERE books.admin = '$x'"));
+
+    echo $count['count(*)'];
+}
+
+function allBooksCount(){
+    global $conn;
+    $count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM books"));
+
+    echo $count['count(*)'];
+}
+
+function categoryCount($x,$y){
+    global $conn;
+    $count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM books WHERE books.admin = '$x' AND books.category = '$y'"));
+
+    echo $count['count(*)'];
+}
+
+function categoryAllCount($x){
+    global $conn;
+    $count = mysqli_fetch_assoc(mysqli_query($conn, "SELECT count(*) FROM books WHERE books.category = '$x'"));
+
+    echo $count['count(*)'];
+}
+
+function adminCount(){
+    global $conn;  
+
+    $result = mysqli_query($conn,"SELECT count(*) FROM `admin`");
+    $sales = mysqli_fetch_assoc($result);
+
+    echo $sales['count(*)'];
+}

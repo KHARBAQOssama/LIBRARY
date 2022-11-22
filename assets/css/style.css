@@ -91,3 +91,8 @@ nav{
 .book{
     box-shadow: 1px 1px 10px rgb(255, 255, 255) !important;
 }
+
+nav{
+    border-bottom: 3px solid ;
+    border-image: linear-gradient(to right, rgb(36, 1, 151), rgb(73, 146, 255)) 1;
+}
