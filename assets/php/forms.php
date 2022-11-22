@@ -56,14 +56,14 @@
 <form action="./assets/php/script.php" method="post" class="modal fade" id="deleteBook" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-                            <input type="text" name="book" id="book">
-                            <input type="text" name="admin" id="admin">
-                            <input type="text" name="bookid" id="bookid">
-                            <input type="text" name="adminid" id="adminid">
+                            <input type="hidden" name="book" id="book">
+                            <input type="hidden" name="admin" id="admin">
+                            <input type="hidden" name="bookid" id="bookid">
+                            <input type="hidden" name="adminid" id="adminid">
                             <h1 class="text-dark fs-5 text-center my-5">ARE YOU SURE YOU WANT TO BUY THIS BOOK</h1>
         <div class="d-flex justify-content-around my-3 w-75 m-auto">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary" name="buy">Buy The Book</button>
+            <button type="button" class="btn  text-info" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn bg-info text-white fw-bold" name="buy">Buy The Book</button>
         </div>
         
       
@@ -92,7 +92,7 @@
                         <i class="hide" id="i1" title="please fill out this"></i>
                     </div>
                     <div class="mb-3  d-flex position-relative">
-                        <input type="text" id="bid" name="bookId" value="">
+                        <input type="hidden" id="bid" name="bookId" value="">
                     </div>
                     <label class="ms-5 text-dark fw-bold" for="author">Author</label>
                     <div class="mb-3  d-flex position-relative">
@@ -117,7 +117,7 @@
                         <i class="hide" id="i4" title="passwords are not the same"></i>
                     </div>
                     <div class="w-100 d-flex justify-content-around align-items-center">
-                        <button type="submit" name="delete" class="btn bg-danger delete-btn text-white rounded px-5">DELETE</button>
-                        <button type="submit" name="update" class="btn bg-warning update-btn text-white rounded px-5">UPDATE</button>
+                        <button type="submit" name="delete" class="btn bg-danger border-0 delete-btn text-white rounded px-5">DELETE</button>
+                        <button type="submit" name="update" class="btn bg-warning border-0 update-btn text-white rounded px-5">UPDATE</button>
                     </div>
             </form>

@@ -88,7 +88,6 @@ nav{
     border-bottom: 3px solid red !important;
 }
 
-.book-info{
-    width: 89%;
-    background-color: rgba(0, 0, 0, 0.539);
+.book{
+    box-shadow: 1px 1px 10px rgb(255, 255, 255) !important;
 }

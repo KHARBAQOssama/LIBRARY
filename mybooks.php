@@ -43,10 +43,10 @@ include './assets/php/database.php';
           <div class="collapse navbar-collapse bg-dark ms-5" id="navbarButtonsExample">
             <!-- Left links -->
             <div class="navbar-nav me-auto my-2 mb-lg-0">
-              <button  class="nav-item btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-4">
+              <button  class="nav-item btn-sm  rounded text-white d-flex align-items-center mx-4">
                 <a class="nav-link text-white" href="home.php"><i class="bi me-2 bi-house text-white"></i>Home</a>
               </button>
-              <button class="nav-item btn-sm text-white rounded d-flex align-items-center mx-4">
+              <button class="nav-item btn-sm text-white border-0 bg-info rounded d-flex align-items-center mx-4">
                 <a class="nav-link text-white" href="mybooks.php"><i class="bi me-2 bi-book text-white"></i>My Books</a>
               </button>
               <button class="nav-item btn-sm text-white rounded  d-flex align-items-center mx-4">
@@ -84,63 +84,58 @@ include './assets/php/database.php';
         <!-- Container wrapper -->
       </nav>
       <!-- Navbar -->
-      <div class="breadcrumbs">
-            <ul>
-              <li></li>
-            </ul>
-      </div>
-      <div class="text-center">
-      <?php if (isset($_SESSION['welcome'])): ?>
-                        <div class="alert alert-sm alert-info alert-dismissible fade show">
-                        <strong class="text-info me-2">HELLO!</strong>
+
+        <div class="text-center">
+      <?php if (isset($_SESSION['added'])){ ?>
+                        <div class="alert alert-sm alert-success alert-dismissible fade show">
+                        <strong class="text-success me-2">COOL!</strong>
                         <?php 
-                                echo $_SESSION['welcome'];
-                            ?>
-                            <b class="text-black">
-                               <?php  
-                                echo $_SESSION['profile']['username'];
-                                ?>
-                                </b>
-                               <?php 
-                                unset ($_SESSION['welcome']);
+                                echo $_SESSION['added'];
+                                unset ($_SESSION['added']);
                                 
                             ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
                         </div>
-                    <?php endif ?>
+                    <?php } ?>
+
+      <?php if(isset($_SESSION['updated'])){
+        ?>
+                      <div class="alert alert-sm alert-success alert-dismissible fade show">
+                        <strong class="text-success me-2">DONE!</strong>
+                        <?php 
+                                echo $_SESSION['updated'];
+                                unset ($_SESSION['updated']);
+                                
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                        </div>
+                      <?php
+                      }?>
 
 
-                   
-      </div>
-      <section class="d-flex row justify-content-around px-5 gap-3">
-      <?php 
+                    <?php if(isset($_SESSION['deleted'])){
+                      ?>
+                      <div class="alert alert-sm alert-success alert-dismissible fade show">
+                        <strong class="text-success me-2">DONE!</strong>
+                        <?php 
+                                echo $_SESSION['deleted'];
+                                unset ($_SESSION['deleted']);
+                                
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                        </div>
+                      <?php
+                      }?>
+        </div>
+        <section class="d-flex row justify-content-around px-5 gap-3">
+            <?php 
             if (isset($_SESSION['profile'])){ 
-            allBooks($_SESSION['profile']['id'] , $_SESSION['profile']['username']);} ?>
-      </section>
-
-      <section class="d-flex row justify-content-around gap-3">
-              <!-- <div class="col-lg-2 bg-white rounded shadow d-flex flex-column pb-2">
-                <img src="./assets/img/animal.png" class="m-auto rounded my-2" alt="" width="90%">
-                <div class="w-100">
-                  <h5 class="text-dark text-center">TITLE : <span>?php echo "$title" ;?></span></h5>
-                  <h5 class="text-dark text-center">AUTHOR : <span>?php echo "$author" ;?></span></h5>
-                  <div class="w-100 d-flex justify-content-between px-3">
-                    <h6 class="text-dark">PRICE : <span class="text-info">?php echo "$price" ;?></span>$</h6>
-                    ?php if($userId != $x){
-                                ?>
-                    <button type="button" onclick="buying('?= $title?>','?= $y?>',?= $id?>,?= $x?>);" data-bs-toggle="modal" data-bs-target="#deleteBook" class="rounded bg-info px-2"><i class="bi bi-cart text-white"></i></button>
-
-                    ?php }?>
-                  </div>
-                </div>
-              </div> -->
-      </section>
-
+            myBooks($_SESSION['profile']['id']);} ?>
+        </section>
       <?php
       include './assets/php/forms.php'
       ?>
     <!-- JavaScript Bundle with Popper -->
     <script src="./assets/js/script.js"></script>
-    
 </body>
 </html>
