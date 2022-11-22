@@ -7,6 +7,8 @@ session_start();
 if(isset($_POST['submitSup']))       register();
 if(isset($_POST['submitSin']))       signIn();
 if(isset($_POST['add']))             addBook();
+if(isset($_POST['update']))          update();
+if(isset($_POST['delete']))          delete();
 
 
 
@@ -89,7 +91,7 @@ function addBook(){
 
         if($result){
             $_SESSION['added'] = " your book has been added successfully !";
-            header('location: ./../../home.php');
+            header ('location: ./../../mybooks.php');
         }
 }}
 
@@ -189,7 +191,7 @@ function myBooks($x){
                   <div class="w-100 d-flex justify-content-between px-3">
                     <h6 class="text-dark">PRICE : <span class="text-info"><?php echo "$price" ;?> $</span></h6>
                   </div>
-                  <button class="w-100 m-auto rounded mt-3 text-info"type="button" data-bs-toggle="modal" data-bs-target="#show-book" onclick="fillBook(<?= $id;?>,'<?= $title;?>','<?= $author;?>',<?= $category;?>,<?= $price;?>);">MORE</button>
+                  <button class="w-100 m-auto rounded mt-3 text-info"type="button" data-bs-toggle="modal" data-bs-target="#show-book" onclick="fillBook(<?= $bookId;?>,'<?= $title;?>','<?= $author;?>',<?= $category;?>,<?= $price;?>);">MORE</button>
                 </div>
               </div>
             <?php    }}
@@ -214,8 +216,24 @@ function update(){
     if($result){
     
         $_SESSION['updated'] = 'your book informations have been updated successfully';
-        header ('location:mybooks.php');
+        header ('location: ./../../mybooks.php');
     }
 }
 
+
+function delete(){
+    global $conn;
+
+    $id = $_POST['bookId'];
+
+    $sql = "DELETE FROM `books` WHERE `id`=$id;";
+
+    $result = mysqli_query($conn,$sql);
+
+    if($result){
+    
+        $_SESSION['deleted'] = 'your book has been deleted successfully';
+        header ('location: ./../../mybooks.php');    
+    }
+}
 

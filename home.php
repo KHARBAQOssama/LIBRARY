@@ -1,7 +1,7 @@
 <?php
 include './assets/php/script.php';
 include './assets/php/database.php';
-// if(!isset($_SESSION['profile']))    header('location:signin.php');
+if(!isset($_SESSION['profile']))    header('location:signin.php');
 ?>
 
 <!DOCTYPE html>
@@ -27,10 +27,9 @@ include './assets/php/database.php';
               src="./assets/img/logo.png"
               height="30"
               alt="Logo"
-              loading="lazy"
               style="margin-top: -1px;"
             />
-            <span class="text-info">YOURBOOK</span>
+            <span class="text-info fw-bold">YOURBOOK</span>
           </a>
           <!-- Toggle button -->
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtonsExample" aria-controls="navbarButtonsExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,50 +39,46 @@ include './assets/php/database.php';
           
       
           <!-- Collapsible wrapper -->
-          <div class="collapse navbar-collapse bg-dark ms-5" id="navbarButtonsExample">
+          <div class="collapse navbar-collapse bg-dark ms-lg-5" id="navbarButtonsExample">
             <!-- Left links -->
             <div class="navbar-nav me-auto my-2 mb-lg-0">
-              <button  class="nav-item btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-4">
-                <a class="nav-link text-white" href="home.php"><i class="bi me-2 bi-house text-white"></i>Home</a>
+              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-lg-4">
+                <a class="nav-link text-center text-white" href="home.php"><i class="bi me-2 bi-house text-white"></i>Home</a>
               </button>
-              <button class="nav-item btn-sm text-white rounded d-flex align-items-center mx-4">
-                <a class="nav-link text-white" href="mybooks.php"><i class="bi me-2 bi-book text-white"></i>My Books</a>
+              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white  rounded d-flex align-items-center mx-lg-4">
+                <a class="nav-link text-center text-white" href="mybooks.php"><i class="bi me-2 bi-book text-white"></i>My Books</a>
               </button>
-              <button class="nav-item btn-sm text-white rounded  d-flex align-items-center mx-4">
-                <a class="nav-link text-white" href="statics.php"><i class="bi me-2 bi-bar-chart text-white"></i>Statics</a>
+              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white rounded  d-flex align-items-center mx-lg-4">
+                <a class="nav-link text-center text-white" href="statics.php"><i class="bi me-2 bi-bar-chart text-white"></i>Statics</a>
               </button>
             </div>
             <!-- Left links -->
-            <div class="d-flex justify-content-between">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center justify-content-between">
                     <button type="button" class="btn btn-sm me-3 border-0 fw-bold bg-info" data-bs-toggle="modal" data-bs-target="#add-book">
                         <i class="bi bi-plus"></i>
                         Add Book
                     </button>
-                </div>
-                <div class="d-flex align-items- ms-1 border-2 border-white rounded">
-                    <a href="#" class="text-decoration-none text-white">
-
+                    <div class="d-flex align-items-center mx-2">
+                    <a href="#" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
                                 echo $_SESSION['profile']['username']; }
                        ?></span>
 
-
-
                     <i class="bi bi-person-circle ms-2 fs-5"></i></a>
                 </div>
-            </div>
-            <form action="script.php" method="post" class="ms-3">
-              <button type="submit" class="btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-2 px-1" id="signout" name="signout">SIGN OUT</button>
-            </form>
+                <form action="script.php" method="post">
+                    <button type="submit" class="btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-2 px-1" id="signout" name="signout">SIGN OUT</button>
+                </form>
+                </div>
+            
 
           </div>
           <!-- Collapsible wrapper -->
         </div>
         <!-- Container wrapper -->
       </nav>
-      <!-- Navbar -->
+    <!-- Navbar -->
       <div class="breadcrumbs">
             <ul>
               <li></li>
@@ -118,23 +113,6 @@ include './assets/php/database.php';
             allBooks($_SESSION['profile']['id'] , $_SESSION['profile']['username']);} ?>
       </section>
 
-      <section class="d-flex row justify-content-around gap-3">
-              <!-- <div class="col-lg-2 bg-white rounded shadow d-flex flex-column pb-2">
-                <img src="./assets/img/animal.png" class="m-auto rounded my-2" alt="" width="90%">
-                <div class="w-100">
-                  <h5 class="text-dark text-center">TITLE : <span>?php echo "$title" ;?></span></h5>
-                  <h5 class="text-dark text-center">AUTHOR : <span>?php echo "$author" ;?></span></h5>
-                  <div class="w-100 d-flex justify-content-between px-3">
-                    <h6 class="text-dark">PRICE : <span class="text-info">?php echo "$price" ;?></span>$</h6>
-                    ?php if($userId != $x){
-                                ?>
-                    <button type="button" onclick="buying('?= $title?>','?= $y?>',?= $id?>,?= $x?>);" data-bs-toggle="modal" data-bs-target="#deleteBook" class="rounded bg-info px-2"><i class="bi bi-cart text-white"></i></button>
-
-                    ?php }?>
-                  </div>
-                </div>
-              </div> -->
-      </section>
 
       <?php
       include './assets/php/forms.php'

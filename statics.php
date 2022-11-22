@@ -45,10 +45,10 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
               <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm  rounded text-white d-flex align-items-center mx-lg-4">
                 <a class="nav-link text-center text-white" href="home.php"><i class="bi me-2 bi-house text-white"></i>Home</a>
               </button>
-              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white border-0 bg-info rounded d-flex align-items-center mx-lg-4">
+              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white rounded d-flex align-items-center mx-lg-4">
                 <a class="nav-link text-center text-white" href="mybooks.php"><i class="bi me-2 bi-book text-white"></i>My Books</a>
               </button>
-              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white rounded  d-flex align-items-center mx-lg-4">
+              <button class="nav-item my-lg-0 my-2 text-center px-lg-0 ps-5  btn-sm text-white border-0 bg-info rounded  d-flex align-items-center mx-lg-4">
                 <a class="nav-link text-center text-white" href="statics.php"><i class="bi me-2 bi-bar-chart text-white"></i>Statics</a>
               </button>
             </div>
@@ -123,9 +123,7 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
                       }?>
         </div>
         <section class="d-flex row justify-content-around px-5 gap-3 pt-4">
-            <?php 
-            if (isset($_SESSION['profile'])){ 
-            myBooks($_SESSION['profile']['id']);} ?>
+            
         </section>
       <?php
       include './assets/php/forms.php'
