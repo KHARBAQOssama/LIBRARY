@@ -53,7 +53,7 @@ button{
 }
 
 a:hover > i{
-    color: #5bc0de;
+    color: #ffffff;
 }
 
 /*sign forms style*/
@@ -88,11 +88,33 @@ nav{
     border-bottom: 3px solid red !important;
 }
 
-.book{
-    box-shadow: 1px 1px 10px rgb(255, 255, 255) !important;
+.profile, .book{
+    box-shadow: 3px 3px 30px rgba(100, 85, 85, 0.705) !important;
 }
 
 nav{
     border-bottom: 3px solid ;
     border-image: linear-gradient(to right, rgb(36, 1, 151), rgb(73, 146, 255)) 1;
 }
+
+
+
+/* scroll styling */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+   /* Handle */
+::-webkit-scrollbar-thumb {
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+}
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to bottom, rgb(5, 155, 255), rgba(0, 179, 255, 0)); 
+  }
+  

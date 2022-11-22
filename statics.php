@@ -10,7 +10,7 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOURLIBRARY-Home</title>
+    <title>YOURLIBRARY-Statics</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -62,15 +62,15 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
                         Add Book
                     </button>
                     <div class="d-flex align-items-center mx-2">
-                    <a href="#" class="text-decoration-none">
+                    <a href="profile.php" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
-                                echo $_SESSION['profile']['username']; }
-                       ?></span>
+                                echo strtoupper($_SESSION['profile']['username']); }
+                                ?></span>
 
                     <i class="bi bi-person-circle ms-2 fs-5"></i></a>
                 </div>
-                <form action="script.php" method="post">
+                <form action="./assets/php/script.php" method="post">
                     <button type="submit" class="btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-2 px-1" id="signout" name="signout">SIGN OUT</button>
                 </form>
                 </div>
@@ -130,21 +130,21 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
             <h3 class="text-info"><i class="bi bi-bar-chart text-info"></i> Statics</h3>
         </div>
         <section class="d-flex row justify-content-around px-5 mb-2 gap-3 pt-4">
-            <div class="d-flex align-items-center col-lg-3 justify-content-between bg-info p-4">
+            <div class="d-flex align-items-center col-lg-3 col-md-3 col-9 justify-content-between bg-info p-4">
                 <i class="bi bi-people fs-1"></i>
                 <div>
                     <h3 class="text-center"><?php adminCount(); ?></h3>
                     <h6 class="text-center">TOTAL USERS</h6>
                 </div>
             </div>
-            <div class="d-flex align-items-center col-lg-3 justify-content-between bg-info p-4">
+            <div class="d-flex align-items-center col-lg-3 col-md-3 col-9 justify-content-between bg-info p-4">
                 <i class="uil uil-book-alt fs-1"></i>
                 <div>
                     <h3 class="text-center"><?php allBooksCount(); ?></h3>
                     <h6 class="text-center">ALL BOOKS</h6>
                 </div>
             </div>
-            <div class="d-flex align-items-center col-lg-3 justify-content-between bg-info p-4">
+            <div class="d-flex align-items-center col-lg-3 col-md-3 col-9 justify-content-between bg-info p-4">
                 <i class="bi bi-book fs-1"></i>
                 <div>
                     <h3 class="text-center"><?php myBooksCount($_SESSION['profile']['id']); ?></h3>
@@ -156,47 +156,47 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
             <h3 class="text-info">By Categories</h3>
         </div>
         <section class="d-flex row justify-content-around px-5  gap-3 pt-4">
-            <div class="d-flex align-items-center col-lg-4 justify-content-between bg-info p-4">
+            <div class="d-flex align-items-center col-lg-4 col-md-5 col-9 justify-content-between bg-info p-4">
                 <i class="uil uil-music fs-1"></i>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryAllCount(1); ?></h3>
                     <h6 class="text-center">TOTAL BOOKS</h6>
                 </div>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryCount($_SESSION['profile']['id'],1); ?></h3>
                     <h6 class="text-center">MY BOOKS</h6>
                 </div>
             </div>
-            <div class="d-flex align-items-center col-lg-4 justify-content-between bg-info p-4">
+            <div class="d-flex align-items-center col-lg-4 col-md-5 col-9 justify-content-between bg-info p-4">
                 <i class="bi bi-hourglass-split fs-1"></i>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryAllCount(2); ?></h3>
                     <h6 class="text-center">TOTAL BOOKS</h6>
                 </div>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryCount($_SESSION['profile']['id'],2); ?></h3>
                     <h6 class="text-center">MY BOOKS</h6>
                 </div>
             </div>
-            <div class="d-flex align-items-center col-lg-4 justify-content-between bg-info p-4">
-                <i class="bi bi-people fs-1"></i>
+            <div class="d-flex align-items-center col-lg-4 col-md-5 col-9 justify-content-between bg-info p-4">
+                <i class="uil uil-dna fs-1"></i>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryAllCount(3); ?></h3>
                     <h6 class="text-center">TOTAL BOOKS</h6>
                 </div>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryCount($_SESSION['profile']['id'],3); ?></h3>
                     <h6 class="text-center">MY BOOKS</h6>
                 </div>
             </div>
-            <div class="d-flex align-items-center col-lg-4 justify-content-between bg-info p-4">
-                <i class="bi bi-people fs-1"></i>
+            <div class="d-flex align-items-center col-lg-4 col-md-5 col-9 justify-content-between bg-info p-4">
+                <i class="bi bi-bug fs-1"></i>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryAllCount(4); ?></h3>
                     <h6 class="text-center">TOTAL BOOKS</h6>
                 </div>
                 <div>
-                    <h3 class="text-center"><?php adminCount(); ?></h3>
+                    <h3 class="text-center"><?php categoryCount($_SESSION['profile']['id'],4); ?></h3>
                     <h6 class="text-center">MY BOOKS</h6>
                 </div>
             </div>

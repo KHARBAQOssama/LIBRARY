@@ -9,6 +9,8 @@ if(isset($_POST['submitSin']))       signIn();
 if(isset($_POST['add']))             addBook();
 if(isset($_POST['update']))          update();
 if(isset($_POST['delete']))          delete();
+if(isset($_POST['buy']))             buy();
+if(isset($_POST['signout']))         signOut();
 
 
 
@@ -166,7 +168,7 @@ function myBooks($x){
                 
                 <img class="m-auto rounded my-2" alt="" width="90%" src="./assets/img/<?php
                     echo "$image"?>"> 
-                    
+
                     <div class="w-100">
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">TITLE : <span class="text-dark"><?php echo "$title" ;?></span></h5>
                   <h5 class="text-dark ps-2" style="text-overflow: ellipsis; overflow: hidden;  height: 1.8em; white-space: nowrap; max-width: 25ch;">AUTHOR : <span class="text-dark"><?php echo "$author" ;?></span></h5>
@@ -218,6 +220,27 @@ function delete(){
         header ('location: ./../../mybooks.php');    
     }
 }
+
+function buy(){
+    global $conn;
+    $book=$_POST['book'];
+    $admin=$_POST['admin'];
+    $aid=$_POST['adminid'];
+    $bid=$_POST['bookid'];
+
+    $result = mysqli_query($conn, "INSERT INTO `sales` (`book_name`,`admin_name`) VALUES ('$book','$admin')");
+    $result2 = mysqli_query($conn, "UPDATE `books` SET `admin` = '$aid' WHERE books.id = '$bid';");
+
+    header('location: ../../mybooks.php'); 
+
+}
+
+function signOut(){
+    session_destroy();
+    unset($_SESSION['profile']);
+    header('location: signin.php');
+}
+
 
 // --------------------------------------
 // -----------statics functions ---------

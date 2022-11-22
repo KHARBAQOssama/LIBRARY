@@ -59,15 +59,15 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
                         Add Book
                     </button>
                     <div class="d-flex align-items-center mx-2">
-                    <a href="#" class="text-decoration-none">
+                    <a href="profile.php" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
-                                echo $_SESSION['profile']['username']; }
-                       ?></span>
+                                echo strtoupper($_SESSION['profile']['username']); }
+                        ?></span>
 
                     <i class="bi bi-person-circle ms-2 fs-5"></i></a>
                 </div>
-                <form action="script.php" method="post">
+                <form action="./assets/php/script.php" method="post">
                     <button type="submit" class="btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-2 px-1" id="signout" name="signout">SIGN OUT</button>
                 </form>
                 </div>
@@ -79,11 +79,9 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
         <!-- Container wrapper -->
       </nav>
     <!-- Navbar -->
-      <div class="breadcrumbs">
-            <ul>
-              <li></li>
-            </ul>
-      </div>
+    <div class="border border-info my-3 w-75 mx-auto text-center py-1">
+            <h3 class="text-info"><i class="bi bi-house text-info"></i> Home</h3>
+    </div>
       <div class="text-center">
       <?php if (isset($_SESSION['welcome'])): ?>
                         <div class="alert alert-sm alert-info alert-dismissible fade show">

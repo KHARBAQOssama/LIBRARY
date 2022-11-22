@@ -10,7 +10,7 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOURLIBRARY-Home</title>
+    <title>YOURLIBRARY-My books</title>
     <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
@@ -59,15 +59,15 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
                         Add Book
                     </button>
                     <div class="d-flex align-items-center mx-2">
-                    <a href="#" class="text-decoration-none">
+                    <a href="profile.php" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
-                                echo $_SESSION['profile']['username']; }
-                       ?></span>
+                                echo strtoupper($_SESSION['profile']['username']); }
+                          ?></span>
 
                     <i class="bi bi-person-circle ms-2 fs-5"></i></a>
                 </div>
-                <form action="script.php" method="post">
+                <form action="./assets/php/script.php" method="post">
                     <button type="submit" class="btn-sm border-0 bg-info rounded text-white d-flex align-items-center mx-2 px-1" id="signout" name="signout">SIGN OUT</button>
                 </form>
                 </div>
@@ -79,7 +79,9 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
         <!-- Container wrapper -->
       </nav>
       <!-- Navbar -->
-
+      <div class="border border-info mt-3 w-75 mx-auto text-center py-1">
+            <h3 class="text-info"><i class="bi bi-book text-info"></i> My Books</h3>
+        </div>
         <div class="text-center">
       <?php if (isset($_SESSION['added'])){ ?>
                         <div class="alert alert-sm alert-success alert-dismissible fade show">
