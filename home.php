@@ -59,7 +59,7 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
                         Add Book
                     </button>
                     <div class="d-flex align-items-center mx-2">
-                    <a href="profile.php" class="text-decoration-none">
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#show-profile" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
                                 echo strtoupper($_SESSION['profile']['username']); }
@@ -96,6 +96,18 @@ if(!isset($_SESSION['profile']))    header('location:./assets/php/signin.php');
                                 </b>
                                <?php 
                                 unset ($_SESSION['welcome']);
+                                
+                            ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+                        </div>
+                    <?php endif ?>
+
+      <?php if (isset($_SESSION['changeProfile'])): ?>
+                        <div class="alert alert-sm alert-info alert-dismissible fade show">
+                        <strong class="text-info me-2">HELLO!</strong>
+                        <?php 
+                                echo $_SESSION['changeProfile'];
+                                unset ($_SESSION['changeProfile']);
                                 
                             ?>
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></span>

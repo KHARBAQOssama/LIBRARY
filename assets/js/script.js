@@ -20,3 +20,5 @@ function buying(adminName,bookName,bookID,adminId){
     document.getElementById('bookid').value = bookID;
     document.getElementById('adminid').value = adminId;
 }
+
+

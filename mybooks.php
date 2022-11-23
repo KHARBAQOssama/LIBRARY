@@ -59,7 +59,7 @@ if(!isset($_SESSION['profile']))    header('location:signin.php');
                         Add Book
                     </button>
                     <div class="d-flex align-items-center mx-2">
-                    <a href="profile.php" class="text-decoration-none">
+                    <a type="button" data-bs-toggle="modal" data-bs-target="#show-profile" class="text-decoration-none">
 
                     <span><?php if (isset($_SESSION['profile'])){ 
                                 echo strtoupper($_SESSION['profile']['username']); }

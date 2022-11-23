@@ -15,7 +15,7 @@ ul, a{
 /* Landing Page style*/
 
 .lp-body{
-    padding: 9%;
+    padding: 9% 0;
     padding-bottom: 6% !important;
 }
 p{

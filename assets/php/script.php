@@ -11,6 +11,9 @@ if(isset($_POST['update']))          update();
 if(isset($_POST['delete']))          delete();
 if(isset($_POST['buy']))             buy();
 if(isset($_POST['signout']))         signOut();
+if(isset($_POST['saveEdit']))         saveEdit();
+if(isset($_POST['changeP']))         changePass();
+
 
 
 
@@ -175,7 +178,7 @@ function myBooks($x){
                   <div class="w-100 d-flex justify-content-between px-3">
                     <h6 class="text-dark">PRICE : <span class="text-info"><?php echo "$price" ;?> $</span></h6>
                   </div>
-                  <button class="w-100 m-auto rounded mt-3 text-info"type="button" data-bs-toggle="modal" data-bs-target="#show-book" onclick="fillBook(<?= $bookId;?>,'<?= $title;?>','<?= $author;?>',<?= $category;?>,<?= $price;?>);">MORE</button>
+                  <button class="w-100 m-auto rounded mt-3 text-info" type="button" data-bs-toggle="modal" data-bs-target="#show-book" onclick="fillBook(<?= $bookId;?>,'<?= $title;?>','<?= $author;?>',<?= $category;?>,<?= $price;?>);">MORE</button>
                 </div>
               </div>
             <?php    }}
@@ -289,4 +292,68 @@ function adminCount(){
     $sales = mysqli_fetch_assoc($result);
 
     echo $sales['count(*)'];
+}
+
+
+function saveEdit(){
+    global $conn;
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $id = $_SESSION['profile']['id'];
+
+    if($username != '' && $email != '' ){
+        if($username != $_SESSION['profile']['username'] || $email != $_SESSION['profile']['email']){
+            $sql = "UPDATE `admin`
+    SET `email` = '$email',`username` = '$username'
+    WHERE `id` = '$id';";
+        $result = mysqli_query($conn,$sql);
+
+
+        if($result){
+
+            $result1= mysqli_query($conn ,"SELECT * FROM admin WHERE admin.id= '$id';");
+            $_SESSION['profile'] = mysqli_fetch_assoc($result1);
+
+            $_SESSION['changeProfile'] = 'Your informations has been edited successfully';
+            header('location: ./../../home.php');
+        }
+        }
+        else{
+            header('location: ./../../home.php');
+        }
+    }else{
+        header('location: ./../../home.php');
+    }
+}
+
+function changePass(){
+    global $conn;
+
+    $oldPass = $_POST['oldWritten'];
+    $newPass = $_POST['newPass'];
+    $newConf = $_POST['newConf'];
+    $id = $_SESSION['profile']['id'];
+
+
+    if($oldPass == $_SESSION['profile']['password']){
+        if($newPass == $newConf && $newPass != ''){
+            $sql = "UPDATE `admin`
+    SET `password` = '$newPass'
+    WHERE `id` = '$id';";
+        $result = mysqli_query($conn,$sql);
+
+
+        if($result){
+
+            $_SESSION['passChanged'] = 'Your password has been changed successfully';
+            header('location: ./../../changepass.php');
+        }
+        }else{
+            $_SESSION['wInfo'] = 'there is something wrong with your informations';
+            header('location: ./../../changepass.php');
+        }
+    }else{
+        $_SESSION['oldWrong'] = 'the old password is wrong !';
+        header('location: ./../../changepass.php');
+    }
 }
