@@ -35,9 +35,16 @@ include '../php/script.php';
             <img class="w-100 rounded" src="../img/illus1.jpg" alt="">
         </div>
         <form action="script.php" method="post" class="col-lg-6 col-md-6 col-sm-12 m-0 sign-form m-auto bg-white text-dark " id="signup-form" >
-                    <div class="d-flex justify-content-center mb-3">
-                        <h3 class="text-info">SIGN UP
+                    <div class="d-flex flex-column">
+                        <h3 class="text-info mb-3 text-center">SIGN UP
                         </h3>
+
+                        <div class="position-relative mb-4">
+                            <p id="usernameW" class="text-danger position-absolute">username invalid !</p>
+                            <p id="emailW" class="text-danger position-absolute">email invalid !</p>
+                            <p id="passW" class="text-danger position-absolute">at lest one uppercase and one number</p>
+                            <p id="pass2W" class="text-danger position-absolute">passwords do not match</p>
+                        </div>
                     </div>
                     <?php if (isset($_SESSION['error'])): ?>
                         <div class="alert alert-sm alert-danger alert-dismissible fade show">
@@ -78,6 +85,6 @@ include '../php/script.php';
       </div>
          <!-- JavaScript Bundle with Popper -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <script src="../js/signup.js"></script>
+        <script src="../../assets/js/signup.js"></script>
 </body>
 </html>
